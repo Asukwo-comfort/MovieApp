@@ -3,11 +3,18 @@ package com.kulex.movieapptutor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
 class RecyclerAdapter (val movies: List<Movie>): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-inner class ViewHolder(item: View): RecyclerView.ViewHolder(item)
+inner class ViewHolder(item: View): RecyclerView.ViewHolder(item){
+    init {
+        itemView.setOnClickListener{
+            itemView.findNavController().navigate(R.id.action_mainFragment_to_detailsFragment)
+        }
+    }
+}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
